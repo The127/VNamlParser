@@ -4,4 +4,6 @@ block {
         testBool = y
         testDouble = 0.1
     }
+    testB = n
 }
+testString = "string"

@@ -88,10 +88,8 @@ fn (mut p ParserState) is_eof() bool {
 fn (mut p ParserState) next_token(kind TokenKind) &Token {
 	if !p.is_eof() {
 		p.index++
-		return p.token_stream[p.index]
 	}
-
-	panic('unexpected end of token stream, expected $kind')
+	return p.token_stream[p.index]
 }
 
 //literal = string | double | integer | boolean
@@ -183,7 +181,6 @@ fn (mut p ParserState) parse_value_list() {
 		return
 	} else if p.current_token.kind == .block_close {
 		p.match_token(.block_close)
-		return
 	} else {
 		p.parse_value()
 		p.parse_value_list()
